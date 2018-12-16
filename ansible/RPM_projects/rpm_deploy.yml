@@ -1,11 +1,16 @@
 ---
 - hosts: localhost
-- name: Copy rpm file to server
-  copy:
-     src: package.rpm
-     dest: /tmp/package.rpm
 
-- name: Install package.
-  yum:
-     name: /tmp/package.rpm
-     state: present
+  tasks:
+    - name: Copy rpm to server
+      copy:
+              src: package.rpm
+              dest: /var/tmp/package.rpm
+      notify:
+        - install rpm 
+
+  handlers:
+    - name: install rpm
+      yum:
+              name: /var/tmp/package.rpm
+              state: present 
