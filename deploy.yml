@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: Copy MathLibrary to server
+      copy:
+              src: src/c/testcode/mathLibTest
+              dest: /tmp/mathLibTest
+      notify:
+        - install rpm 
+
+  handlers:
+    - name: install rpm
+      yum:
+              name: /tmp/mathLibTest
+              state: present 
