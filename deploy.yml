@@ -7,10 +7,10 @@
               src: src/c/testcode/mathLibTest
               dest: /tmp/mathLibTest
       notify:
-        - install rpm 
+        - install package 
 
   handlers:
-    - name: install rpm
-      yum:
+    - name: install package
+      dnf:
               name: /tmp/mathLibTest
-              state: present 
+              state: present
