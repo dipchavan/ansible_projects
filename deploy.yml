@@ -6,11 +6,3 @@
       copy:
               src: src/c/testcode/mathLibTest
               dest: /tmp/mathLibTest
-      notify:
-        - install package 
-
-  handlers:
-    - name: install package
-      dnf:
-              name: /tmp/mathLibTest
-              state: present
